@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="gb2312"?>
+<wf-template id='cms_wf_templ' desc='投诉管理系统工作流模型' nodeImg='' transImg='' arrowImg='' endImg=''>
+	<start id='cms_node_accpt' desc='投诉发起' type='manual' width="44" height="44" top="44" left="132" />
+	<node id='cms_node_distr' desc='投诉分发' type='manual' width="44" height="44" top="154" left="132" />
+	<node id='cms_node_deal' desc='投诉处理' type='manual' width="44" height="44" top="242" left="132" />
+	<node id='cms_node_confirm' desc='投诉审核' type='manual' width="44" height="44" top="322" left="132" />
+
+	<trans id='cms_trans_accpt2distr' from='cms_node_accpt' to='cms_node_distr' desc='发起到分发' P1_X="154" P1_Y="88" P2_X="154" P2_Y="154" />
+	<trans id='cms_trans_distr2deal' from='cms_node_distr' to='cms_node_deal' desc='分发到处理' P1_X="154" P1_Y="198" P2_X="154" P2_Y="240" />
+	
+	<trans id='cms_trans_deal2conf' from='cms_node_deal' to='cms_node_confirm' desc='处理到审核' condition="1" P1_X="154" P1_Y="286" P2_X="154" P2_Y="322" />
+	<trans id='cms_trans_deal2accpt' from='cms_node_deal' to='cms_node_distr' desc='处理到分发' condition="2" P1_X="176" P1_Y="344" P2_X="176" P2_Y="266" B1_X="220" B1_Y="310" B2_X="220" B2_Y="290"/>
+	
+	<trans id='cms_trans_conf2end' from='cms_node_confirm' to='cms_node_end' desc='审核结束' condition="3" P1_X="154" P1_Y="366" P2_X="154" P2_Y="400" />
+	<trans id='cms_trans_conf2deal' from='cms_node_confirm' to='cms_node_deal' desc='审核到处理' condition="4" P1_X="132" P1_Y="266" P2_X="132" P2_Y="176" B1_X="100" B1_Y="246" B2_X="100" B2_Y="200"/>
+	
+
+	<!-- <start id='cms_node_start' desc='流程启动' width="44" height="44" top="44" left="132" /> -->
+	<end id='cms_node_end' desc='流程结束' width="44" height="44" top="400" left="132" />
+</wf-template>

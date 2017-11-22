@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project basedir="." default="compile">
+
+	<property file="build.properties" />
+
+	<path id="classpath">
+		<fileset dir="${lib.dir}">
+			<include name="*.jar" />
+		</fileset>
+		<fileset dir="${java.home}/lib">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<!-- clera class out folder-->
+	<target name="clear">
+		<!--<delete dir="${classout.dir}" />-->
+		<delete dir="${javadoc.dir}" />
+	</target>
+	<!-- remake class out folder -->
+	<target name="prepare" depends="clear">
+		<!--<mkdir dir="${classout.dir}" />-->
+		<mkdir dir="${javadoc.dir}" />
+	</target>
+
+	<!-- compile java file to class file -->
+	<target name="compile">
+		<copy todir="${classout.dir}">
+			<fileset dir="${config.dir}">
+				<include name="**/*.*" />
+				<include name="**/*" />
+			</fileset>
+		</copy>
+		<javac classpathref="classpath" destdir="${classout.dir}" debug="on" encoding="utf-8">
+			<src path="${src.dir}" />
+		</javac>
+	</target>
+
+	<target name="jar" depends="compile">
+		<jar destfile="${classout.dir}" jarfile="${lib.dir}/batch_aps.jar" basedir="${classout.dir}" />
+	</target>
+
+	<!--create javadoc files-->
+	<target name="javadoc" depends="compile">
+		<javadoc destdir="${javadoc.dir}" packagenames="${docs.packages}" classpathref="classpath" author="true"
+			version="true" overview="${javadoc.dir}/overview.html" windowTitle="APS batch API - 1.0" doctitle="APS batch API 1.0"
+			footer="&lt;a href=&quot;http://www.bankht.com.cn/&quot; target=&quot;_top&quot;&gt; aps project team &lt;/a&gt;"
+			use="true" verbose="false" docencoding="gbk" charset="gbk" encoding="utf-8" noindex="false" nohelp="false">
+			<fileset dir="${src}">
+				<exclude name="**/**.xml" />
+				<exclude name="**/**.txt" />
+				<exclude name="**/**.properties" />
+			</fileset>
+			<!--<link href="http://java.sun.com/j2se/1.5/docs/api/"/>-->
+		</javadoc>
+	</target>
+
+
+
+	<!-- product .zip package , include .class,config , .bat file -->
+	<!-- - - - - - - - - - - - - - - - - - 
+		target: csr_zip                      
+		- - - - - - - - - - - - - - - - - -->
+	<target name="gcs_coll_zip">
+		<mkdir dir="gcsCollBatch" />
+		<zip basedir="." destfile="batch_gcs_coll.zip">
+			<include name="collBatch.bat" />
+			<include name="${lib.dir}/**" />
+			<include name="${classout.dir}/**" />
+			<include name="gcsCollBatch" />
+		</zip>
+		<delete dir="gcsCollBatch" />
+	</target>
+
+	<target name="report_zip">
+		<zip basedir="." destfile="batch_report.zip">
+			<include name="gcs-report-process-first.bat" />
+			<include name="gcs-report-process-second.bat" />
+			<include name="${lib.dir}/**" />
+			<include name="${classout.dir}/**" />
+		</zip>
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+		target: all_zip                      
+		- - - - - - - - - - - - - - - - - -->
+	<target name="all_zip">
+		<antcall target="gcs_coll_zip" />
+		<antcall target="report_zip" />
+	</target>
+</project>

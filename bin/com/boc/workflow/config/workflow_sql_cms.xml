@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="gb2312"?>
+<sqls>
+	<sql id="query_task_sql">
+		<![CDATA[
+		 select * 
+		 from wf_task_active t
+		 where t.biz_id=?
+		 ]]>
+	</sql>
+	
+	<sql id="add_task_sql">
+		<![CDATA[
+		  insert into wf_task_active 
+		  (biz_id,wf_task_id,user_id,role_id,group_id,wf_task_start_date,wf_task_state,templ_node_id) 
+		   values(?,?,?,?,?,sysdate,?,?)
+		 ]]>
+	</sql>
+	<sql id="update_task_sql">
+		<![CDATA[
+		 update wf_task_active 
+		  set templ_node_id = ? , user_id=? , role_id=? 
+		  , group_id=? , wf_task_start_date = sysdate , wf_task_state = ? 
+		   where biz_id = ? 
+		 ]]>
+	</sql>
+	<sql id="add_taskHis_sql">
+		<![CDATA[
+		  insert into wf_task_finish 
+		  (biz_id,wf_task_id,user_id,role_id,group_id,wf_task_start_date,wf_task_state,templ_node_id) 
+		   values(?,?,?,?,?,sysdate,?,?)
+		 ]]>
+	</sql>
+	<sql id="delete_task_sql">
+		<![CDATA[
+		  delete from wf_task_active 
+		  where biz_id = ?
+		 ]]>
+	</sql>
+	<sql id="update_taskHis_sql">
+		<![CDATA[
+		  update wf_task_finish 
+		  set wf_task_end_date=sysdate , templ_trans_id = ?
+		  where biz_id = ? and wf_task_end_date is null
+		 ]]>
+	</sql>
+	<sql id="query_userActive_sql">
+		<![CDATA[
+		  select biz_id from wf_task_active t  
+		  where user_id=? 
+		 ]]>
+	</sql>
+	<sql id="query_groupActive_sql">
+		<![CDATA[
+		  select biz_id from wf_task_active t 
+		  where group_id=? 
+		 ]]>
+	</sql>
+	<sql id="query_lastTask_sql">
+		<![CDATA[
+		 select * from 
+		(select * from wf_task_finish f where f.templ_node_id = ? 
+		order by f.wf_task_end_date desc) where rownum=1
+		 ]]>
+	</sql>
+
+</sqls>

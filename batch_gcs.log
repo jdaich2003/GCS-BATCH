@@ -1,0 +1,13 @@
+ERROR 2012-10-23 20:55:56,765 [main] boc.gcs.batch.report.common.ReportBatchDate(ReportBatchDate.java:23) - init ReportBatchDate err,can't find report_date.properties
+java.io.FileNotFoundException: F:\%e9%93%b6%e6%81%92%e9%80%9a%e5%b7%a5%e4%bd%9c%e5%a4%87%e4%bb%bd\%e9%93%b6%e6%81%92%e9%80%9aE%e7%9b%98\workspace\GCS-BATCH\bin\report_date.properties (系统找不到指定的路径。)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(Unknown Source)
+	at boc.gcs.batch.common.util.PropertyUtil.<init>(PropertyUtil.java:56)
+	at boc.gcs.batch.common.util.PropertyUtil.getInstance(PropertyUtil.java:40)
+	at boc.gcs.batch.report.common.ReportBatchDate.<init>(ReportBatchDate.java:20)
+	at boc.gcs.batch.report.exe.DownAndUpReport.main(DownAndUpReport.java:49)
+ERROR 2012-10-23 20:55:56,828 [main] boc.gcs.batch.report.exe.DownAndUpReport(DownAndUpReport.java:119) - 
+java.lang.NullPointerException
+	at boc.gcs.batch.report.common.ReportBatchDate.getBatchDate(ReportBatchDate.java:36)
+	at boc.gcs.batch.report.exe.DownAndUpReport.main(DownAndUpReport.java:50)
+ERROR 2012-10-23 20:55:56,828 [main] boc.gcs.batch.report.exe.DownAndUpReport(DownAndUpReport.java:121) - #######Report Download and upload finished ERROR!date:########

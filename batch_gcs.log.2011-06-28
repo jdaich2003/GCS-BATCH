@@ -1,0 +1,32 @@
+ERROR 2011-06-28 08:24:06,708 [main] boc.gcs.batch.report.common.ReportBatchDate(ReportBatchDate.java:22) - init ReportBatchDate err,can't find report_date.properties
+java.io.FileNotFoundException: \report_date.properties (系统找不到指定的文件。)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:106)
+	at boc.gcs.batch.common.util.PropertyUtil.<init>(PropertyUtil.java:56)
+	at boc.gcs.batch.common.util.PropertyUtil.getInstance(PropertyUtil.java:40)
+	at boc.gcs.batch.report.common.ReportBatchDate.<init>(ReportBatchDate.java:19)
+	at boc.gcs.batch.report.common.ReportBatchDate.main(ReportBatchDate.java:47)
+ERROR 2011-06-28 08:24:46,115 [main] boc.gcs.batch.report.common.ReportBatchDate(ReportBatchDate.java:22) - init ReportBatchDate err,can't find report_date.properties
+java.io.FileNotFoundException: report_date.properties (系统找不到指定的文件。)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:106)
+	at boc.gcs.batch.common.util.PropertyUtil.<init>(PropertyUtil.java:56)
+	at boc.gcs.batch.common.util.PropertyUtil.getInstance(PropertyUtil.java:40)
+	at boc.gcs.batch.report.common.ReportBatchDate.<init>(ReportBatchDate.java:19)
+	at boc.gcs.batch.report.common.ReportBatchDate.main(ReportBatchDate.java:47)
+ERROR 2011-06-28 08:25:40,607 [main] boc.gcs.batch.report.common.ReportBatchDate(ReportBatchDate.java:22) - init ReportBatchDate err,can't find report_date.properties
+java.io.FileNotFoundException: report_date.properties (系统找不到指定的文件。)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:106)
+	at boc.gcs.batch.common.util.PropertyUtil.<init>(PropertyUtil.java:56)
+	at boc.gcs.batch.common.util.PropertyUtil.getInstance(PropertyUtil.java:40)
+	at boc.gcs.batch.report.common.ReportBatchDate.<init>(ReportBatchDate.java:19)
+	at boc.gcs.batch.report.common.ReportBatchDate.main(ReportBatchDate.java:47)
+ERROR 2011-06-28 08:26:25,068 [main] boc.gcs.batch.report.common.ReportBatchDate(ReportBatchDate.java:23) - init ReportBatchDate err,can't find report_date.properties
+java.lang.NullPointerException
+	at boc.gcs.batch.report.common.ReportBatchDate.<init>(ReportBatchDate.java:19)
+	at boc.gcs.batch.report.common.ReportBatchDate.main(ReportBatchDate.java:48)
+ERROR 2011-06-28 08:26:55,214 [main] boc.gcs.batch.report.common.ReportBatchDate(ReportBatchDate.java:23) - init ReportBatchDate err,can't find report_date.properties
+java.lang.NullPointerException
+	at boc.gcs.batch.report.common.ReportBatchDate.<init>(ReportBatchDate.java:19)
+	at boc.gcs.batch.report.common.ReportBatchDate.main(ReportBatchDate.java:48)

@@ -1,0 +1,661 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<reports>
+	<report id='FKJY1' width='100'>
+		<reportName>分行柜台交易明细报表</reportName>
+		<reportParams>
+			<param bindKey='bhId'/>
+			<param bindKey='date'/>
+		</reportParams>
+		<reportBody>
+			<row type='title' sqlId='FKJY_TITLE_SQL'>
+				<cell text='报表货币' bindKey='bh_currency' type='String' />
+				<cell text='报表单位' bindKey='bh_name' type='String' />
+				<cell text='报告时间' bindKey='rpt_time' type='String' convert='getLocaleDate(rpt_time,bhId)'/>
+				<cell text='清算日' bindKey='rpt_time' type='String' convert='getLocaleTime(rpt_time,bhId)'/>
+			</row>
+			<row type='body' sqlId='FKJY1_DETAIL_SQL'>
+				<cell text='收单机构号' bindKey='sd_branch_id' type='String' />
+				<cell text='交易流水号' bindKey='gcs_transaction_id' type='String' />
+				<!-- <cell text='发卡流水号' bindKey='eom_transaction_id' type='String' />
+				<cell text='清算流水号' bindKey='square_tranction_id' type='String' /> -->
+				<cell text='交易终端ID' bindKey='terminal_id' type='String' />
+				<cell text='交易卡号' bindKey='pan' type='String' />
+				<cell text='交易码' bindKey='action_code' type='String' />
+				<cell text='交易柜台' bindKey='transaction_branch_id' type='String' />
+				<cell text='所属一级机构' bindKey='transaction_firit_branch_id' type='String' />
+				<cell text='操作员' bindKey='transaction_user_id' type='String' />
+				<cell text='交易金额' bindKey='transcation_amount' type='BigDecimal' />
+				<cell text='交易币种' bindKey='currency_code' type='String' />
+				<cell text='入账金额' bindKey='operte_account_amount' type='BigDecimal' />
+				<cell text='入账币种' bindKey='operte_account_currency_code' type='String' />
+				<cell text='交易手续费' bindKey='spend_lost_amount' type='BigDecimal' />
+				<cell text='交易手续费币种' bindKey='spend_lost_currency_code' type='String' />
+				<cell text='清算金额' bindKey='square_amount' type='BigDecimal' />
+				<cell text='清算货币' bindKey='square_currency_code' type='String' />
+				<cell text='交易汇率' bindKey='transaction_exchange_rate' type='String' />
+				<cell text='本地交易日期' bindKey='local_trans_date' type='String' />
+				<cell text='本地交易时间' bindKey='local_trans_time' type='String' />
+				<cell text='交易状态' bindKey='transcation_state' type='String' />
+				<cell text='冲正标识' bindKey='gcs_change_error_flag' type='String' />
+				<cell text='挂账周期' bindKey='wait_account_cyc_long' type='String' />
+				<!--<cell text='交易描述' bindKey='xxxx' type='String' />-->
+			</row>
+		</reportBody>
+	</report>
+
+	<report id='FKJY0' width='100'>
+		<reportName>分行柜台交易汇总报表</reportName>
+		<reportParams>
+			<param bindKey='bhId'/>
+			<param bindKey='date'/>
+		</reportParams>
+		<reportBody>
+			<row type='title' sqlId='FKJY_TITLE_SQL'>
+				<cell text='报表货币' bindKey='bh_currency' type='String' />
+				<cell text='报表单位' bindKey='bh_name' type='String' />
+				<cell text='报告时间' bindKey='rpt_time' type='String' convert='getLocaleDate(rpt_time,bhId)'/>
+				<cell text='清算日' bindKey='rpt_time' type='String' convert='getLocaleTime(rpt_time,bhId)'/>
+			</row>
+			<row type='body' sqlId='FKJY0_BODY_SQL'>
+				<cell text='交易日期' bindKey='local_trans_date' type='String' />
+				<cell text='交易类型' bindKey='action_name' type='String' convert='getLocaleTransLan(action_name)'/>
+				<cell text='交易代码' bindKey='action_code' type='String' />
+				<cell text='交易总金额' bindKey='sum_transcation_amount' type='BigDecimal' />
+				<cell text='交易总笔数' bindKey='total_count' type='String' />
+				<cell text='交易货币' bindKey='currency_code' type='String' />
+				<cell text='手续费总金额' bindKey='sum_spend_lost_amount' type='BigDecimal' />
+				<cell text='手续费货币' bindKey='spend_lost_currency_code' type='String' />
+			</row>
+			<row type='bottom' sqlId='FKJY0_BOTTOM_SQL'>
+				<cell text='本地交易总计金额' bindKey='local_amount_total' type='BigDecimal' />
+				<cell text='本地交易币种' bindKey='local_currency' type='String' />
+				<cell text='本代他交易总计金额' bindKey='remote_amount_total' type='BigDecimal'/>
+				<cell text='本代他交易币种' bindKey='remote_currency' type='String' />
+			</row>
+		</reportBody>
+	</report>
+
+	<report id='FKDZ1' width='100'>
+		<reportName>海外分行柜台交易对账匹配报表</reportName>
+		<reportParams>
+			<param bindKey='bhId'/>
+			<param bindKey='date'/>
+		</reportParams>
+		<reportBody>
+			<row type='body' sqlId='FKDZ1_DETAIL_SQL'>
+				<!-- <cell text='系统方向' bindKey='sys_direction' type='String' /> -->
+				<cell text='交易流水号' bindKey='gcs_transaction_id' type='String' />
+				<cell text='发卡流水号' bindKey='iss_transaction_id' type='String' />
+				<cell text='交易终端ID' bindKey='terminal_id' type='String' />
+				<cell text='交易卡号' bindKey='pan' type='String' />
+				<cell text='交易码' bindKey='action_code' type='String' />
+				<cell text='交易金额' bindKey='transcation_amount' type='String' />
+				<cell text='交易币种' bindKey='currency_code' type='String' />
+				<cell text='入账金额' bindKey='operte_account_amount' type='String' />
+				<cell text='入账币种' bindKey='operte_account_currency_code' type='String' />
+				<cell text='交易手续费' bindKey='spend_lost_amount' type='String' />
+				<cell text='交易汇率' bindKey='transaction_exchange_rate' type='String' />
+				<cell text='本地交易日期' bindKey='local_trans_date' type='String' />
+				<cell text='本地交易时间' bindKey='local_trans_time' type='String' />
+			</row>
+		</reportBody>
+	</report>
+	
+	<report id='FKDZX1' width='100'>
+		<reportName>海外分行柜台交易对账不匹配报表</reportName>
+		<reportParams>
+			<param bindKey='bhId'/>
+			<param bindKey='date'/>
+		</reportParams>
+		<reportBody>
+			<row type='body' sqlId='FKDZX1_DETAIL_SQL'>
+				<!--<cell text='系统方向' bindKey='sys_direction' type='String' />-->
+				<cell text='交易流水号' bindKey='gcs_transaction_id' type='String' />
+				<cell text='发卡流水号' bindKey='iss_transaction_id' type='String' />
+				<cell text='交易终端ID' bindKey='terminal_id' type='String' />
+				<cell text='交易卡号' bindKey='pan' type='String' />
+				<cell text='交易码' bindKey='action_code' type='String' />
+				<cell text='交易金额' bindKey='transcation_amount' type='String' />
+				<cell text='交易币种' bindKey='currency_code' type='String' />
+				<cell text='入账金额' bindKey='operte_account_amount' type='String' />
+				<cell text='入账币种' bindKey='operte_account_currency_code' type='String' />
+				<cell text='交易手续费' bindKey='spend_lost_amount' type='String' />
+				<cell text='交易汇率' bindKey='transaction_exchange_rate' type='String' />
+				<cell text='本地交易日期' bindKey='local_trans_date' type='String' />
+				<cell text='本地交易时间' bindKey='local_trans_time' type='String' />
+			</row>
+		</reportBody>
+	</report>
+	
+	<report id='QSDZ1' width='100'>
+		<reportName>总行下划资金对账正常交易报表（明细）</reportName>
+		<reportParams>
+			<param bindKey='bhId'/>
+			<param bindKey='date'/>
+		</reportParams>
+		<reportBody>
+			<row type='body' sqlId='QSDZ1_DETAIL_SQL'>
+				
+			</row>
+		</reportBody>
+	</report>
+	
+	<report id='QSDZ0' width='100'>
+		<reportName>总行下划资金对账正常交易报表（汇总）</reportName>
+		<reportParams>
+			<param bindKey='bhId'/>
+			<param bindKey='date'/>
+		</reportParams>
+		<reportBody>
+			<row type='body' sqlId='QSDZ0_DETAIL_SQL'>
+				
+			</row>
+		</reportBody>
+	</report>
+	
+
+	<!-- 对账报文加工模板 start -->
+	<report id='ISS_TRANS_DETAIL_INTERFACE' class='boc.gcs.batch.report.processdata.ISSProcessFile2DB' width='100'>
+		<reportName>主机日交易明细对账接口报文</reportName>
+		<reportBody>
+			<row type='title'>
+				<cell text='记录标志位' bindKey='flag' size='3' type='String' />
+				<cell text='文件来源' bindKey='file_orig' size='4' type='String' />
+				<cell text='文件生成日期' bindKey='file_date' size='8' type='SunDate' />
+				<cell text='文件生成时间' bindKey='file_time' size='6' type='String' />
+			</row>
+			<row type='body'>
+				<cell text='记录标志位' bindKey='flag' size='3' type='String' />
+				<cell text='交易卡号' bindKey='pan' size='28' type='String' />
+				<cell text='交易流水号' bindKey='gcs_transaction_id' size='16' type='String' />
+				<cell text='交易金额' bindKey='transcation_amount' size='17' type='BigDecimal' check='true' />
+				<cell text='入账金额' bindKey='operte_account_amount' size='17' type='BigDecimal' check='true' />
+				<cell text='交易币种' bindKey='currency_code' size='3' type='String' check='true' />
+				<cell text='入账币种' bindKey='operte_account_currency_code' size='3' type='String' check='true' />
+				<cell text='本地交易日期' bindKey='local_trans_date' size='8' type='SunDate' />
+				<cell text='汇率' bindKey='transaction_exchange_rate' size='10' type='String' convert='getRate(transaction_exchange_rate)'/>
+			</row>
+			<row type='bottom'>
+				<cell text='记录标志位' bindKey='flag' size='3' type='String' />
+				<cell text='总记录数' bindKey='count' size='17' type='String' />
+			</row>
+		</reportBody>
+	</report>
+	<!-- 对账 文件中参考号（12位）放16位交易流水号的前12位
+		对账 文件中系统跟踪号（6位）放16位交易流水号的后4位，前补00-->
+	<report id='EI_TRANS_DETAIL_INTERFACE' class='boc.gcs.batch.report.processdata.EIProcessFile2DB' width='100'>
+		<reportName>清算日交易明细对账接口报文</reportName>
+		<reportBody>
+			<row type='title'>
+				<cell text='记录标志位' bindKey='flag' size='3' type='String' />
+				<cell text='分行联行号' bindKey='transaction_firit_branch_id' size='11' type='String' />
+				<cell text='EI处理日期' bindKey='ei_deal_date' size='8' type='Date' />
+				<cell text='主机系统日期' bindKey='file_date' size='8' type='Date' />
+				<cell text='主机系统时间' bindKey='file_time' size='6' type='String' />
+			</row>
+			<row type='body'>
+				<cell text='记录标志位' bindKey='flag' size='3' type='String' />
+				<cell text='交易信息类型' bindKey='transaction_info_type' size='4' type='String' />
+				<cell text='卡号' bindKey='pan' size='19' type='String' />
+				<cell text='处理码' bindKey='deal_code' size='6' type='String' />
+				<cell text='交易金额' bindKey='transcation_amount' size='12' type='BigDecimal' check='true'/>
+				<cell text='交易日期(格林威治时间)' bindKey='gmt_date' size='4' type='String' />
+				<cell text='交易时间(格林威治时间)' bindKey='gmt_time' size='6' type='String' />
+				<cell text='系统跟踪号' bindKey='sys_track_no' size='6' type='String' />
+				<cell text='交易日期' bindKey='local_trans_date' size='6' type='String' />
+				<cell text='交易时间' bindKey='local_trans_time' size='6' type='String' />
+				<cell text='外围系统清算日期' bindKey='out_ei_date' size='8' type='String' />
+				<cell text='IST清算日期' bindKey='ist_ei_date' size='8' type='String' />
+				<cell text='收单机构号' bindKey='sd_branch_id' size='11' type='String'  update='true'/>
+				<cell text='转发机构号' bindKey='zf_branch_id' size='11' type='String' />
+				<cell text='发卡机构号' bindKey='fk_branch_id' size='11' type='String' />
+				<cell text='参考号' bindKey='refer_no' size='12' type='String' />
+				<cell text='EI内部参考号' bindKey='ei_refer_no' size='16' type='String' />
+				<cell text='EI交易码' bindKey='ei_action_code' size='4' type='String' />
+				<cell text='卡片有效期' bindKey='pan_valid_period' size='4' type='String' />
+				<cell text='授权号' bindKey='author_no' size='6' type='String' />
+				<cell text='交易返回码' bindKey='transaction_back_code' size='3' type='String' />
+				<cell text='POS输入码' bindKey='pos_input_code' size='3' type='String' />
+				<cell text='POS条件码' bindKey='pos_condi_code' size='2' type='String' />
+				<cell text='MCC码' bindKey='mcc_code' size='4' type='String' />
+				<cell text='转出账号' bindKey='trans_out_acc_num' size='28' type='String' />
+				<cell text='转入账号' bindKey='trans_in_acc_num' size='28' type='String' />
+				<cell text='CUPID' bindKey='cup_id' size='11' type='String' />
+				<cell text='同上' bindKey='cup_id_1' size='12' type='String' />
+				<cell text='终端编号' bindKey='terminate_no' size='8' type='String' />
+				<cell text='商户编号' bindKey='commercial_no' size='15' type='String' />
+				<cell text='商户名称和地址' bindKey='commercial_addr' size='40' type='String' />
+				<cell text='交易币种' bindKey='currency_code' size='3' type='String' check='true'/>
+				<cell text='清算币种' bindKey='square_currency_code' size='3' type='String' update='true'/>
+				<cell text='冲正标记' bindKey='change_error_flag' size='1' type='String' />
+				<cell text='清算金额' bindKey='square_amount' size='13' type='BigDecimal' update='true' convert='convertEIAmount(square_amount)'/>
+				<cell text='清算费用金额' bindKey='square_fee_amount' size='13' type='BigDecimal' convert='convertEIAmount(square_fee_amount)'/>
+				<cell text='手续费金额' bindKey='spend_lost_amount' size='13' type='BigDecimal' update='true' convert='convertEIAmount(spend_lost_amount)'/>
+			</row>
+			<row type='bottom'>
+				<cell text='记录标志位' bindKey='flag' size='3' type='String' />
+				<cell text='总笔数' bindKey='transaction_curr_count' size='12' type='String' />
+			</row>
+		</reportBody>
+	</report>
+	<!-- 对账报文加工模板 end -->
+
+
+	<sql id='SELECT_TRANSACTION_INFO' desc="根据流水查询交易记录">
+		<![CDATA[
+		select * from gcs_transaction_info
+		where 1=1  
+		and gcs_transaction_id=?
+		]]>
+	</sql>
+
+	<sql id='FKJY1_DETAIL_SQL' desc="交易明细">
+		<![CDATA[
+		select * from gcs_transaction_info
+		where 1=1
+		and transaction_firit_branch_id = ?
+		and local_trans_date = ? and transcation_state='2'
+		]]>
+		<params bindKey='bhId'/>
+		<params bindKey='date'/>
+	</sql>
+	
+	<sql id='FKJY_TITLE_SQL' desc="交易明细抬头">
+		<![CDATA[
+		select bcc.branch_currecy_code as bh_currency,
+			b.branch_name as bh_name,
+			sysdate as rpt_time
+		from igcs_branch_currecy_code bcc,
+			 igcs_branch b
+		where 1=1
+			and b.branch_id= ?
+			and b.branch_id = bcc.branch_id
+		]]>
+		<params bindKey='bhId'/>
+		
+	</sql>
+	
+	<sql id='FKJY0_BODY_SQL' desc="交易明细汇总（按交易）">
+		<![CDATA[
+		select local_trans_date,'CC_tranType.'||action_code action_name,action_code,
+			sum(transcation_amount) sum_transcation_amount,count(1) total_count,currency_code,
+			sum(spend_lost_amount) sum_spend_lost_amount,spend_lost_currency_code
+		from gcs_transaction_info 
+		where 1=1
+			and transaction_firit_branch_id = ?
+			and local_trans_date = ? and transcation_state='2'
+		group by local_trans_date,action_code,
+			currency_code,spend_lost_currency_code
+		]]>
+		<params bindKey='bhId'/>
+		<params bindKey='date'/>
+	</sql>
+	
+	<sql id='FKJY0_BOTTOM_SQL' desc="交易汇总(本地异地)">
+		<![CDATA[
+		select * from 
+	      (select 	
+		       sum(transcation_amount) local_amount_total,
+		       currency_code local_currency
+	       from gcs_transaction_info 
+		   where 1=1
+		       and transaction_firit_branch_id = ?
+		  	   and local_trans_date = ?
+		       and substr(transaction_branch_id,0,3)  = substr(?,0,3)
+	       group by currency_code,transaction_branch_id)  full join
+	      (select 	
+		       sum(transcation_amount) remote_amount_total,
+		       currency_code remote_currency
+	       from gcs_transaction_info 
+	  	   where 1=1
+		       and transaction_firit_branch_id = ?
+		       and local_trans_date = ?
+		       and substr(transaction_branch_id,0,3)  != substr(?,0,3)
+	       group by currency_code)  on local_currency=remote_currency
+		]]>
+		<params bindKey='bhId'/>
+		<params bindKey='date'/>
+		<params bindKey='bhId'/>
+		<params bindKey='bhId'/>
+		<params bindKey='date'/>
+		<params bindKey='bhId'/>
+	</sql>
+	
+	<sql id='FKDZ1_DETAIL_SQL' desc="交易对账匹配明细">
+		<![CDATA[
+		select 'GCS' sys_direction,t.* from gcs_transaction_info t
+		where 1=1
+		and check_flag_iss='0'
+		and transaction_firit_branch_id = ?
+		and local_trans_date = ?
+		]]>
+		<params bindKey='bhId'/>
+		<params bindKey='date'/>
+	</sql>
+	
+	<sql id='FKDZX1_DETAIL_SQL' desc="交易对账不匹配明细">
+		<![CDATA[
+		select 'GCS' sys_direction,t.* from gcs_transaction_info t
+		where 1=1
+		and (check_flag_iss='1' or check_flag_iss='2')
+		and t.transaction_firit_branch_id = ?
+		and t.local_trans_date = ?
+		]]>
+		<params bindKey='bhId'/>
+		<params bindKey='date'/>
+	</sql>
+	
+
+	<!-- 发卡对账sql 开始  and bank_trans_date=?-->
+	<sql id='SELECT_TRANSACTION_INFO_ISS' desc="查询iss待对账交易记录">
+		<![CDATA[
+		select * from gcs_transaction_info_iss
+		where 1=1 
+		and transaction_firit_branch_id=?
+		
+		]]>
+	</sql>
+	<sql id='UPDATE_TRANSACTION_INFO_STATE_ISS' desc="根据流水更新对账状态">
+		<![CDATA[
+		update gcs_transaction_info
+		set check_flag_iss=?
+		where 1=1
+		and gcs_transaction_id=?
+		]]>
+	</sql>
+	<sql id='INSERT_TRANSACTION_INFO_ISS_UM' desc="根据流水插入对账不匹配交易记录">
+		<![CDATA[
+		insert into gcs_transaction_info_iss_um (select * from gcs_transaction_info_iss where gcs_transaction_id=?)
+		]]>
+	</sql>
+
+	<sql id='INSERT_TRANSACTION_INFO_ISS_UNILA' desc="根据流水插入对账单边交易记录">
+		<![CDATA[
+		insert into gcs_transaction_info_iss_unila (select * from gcs_transaction_info_iss where gcs_transaction_id=?)
+		]]>
+	</sql>
+
+	<sql id='SELECT_TRANSACTION_INFO_UNREACH_ISS' desc="查询iss未达">
+		<![CDATA[
+		select * from gcs_transaction_info a
+		where 1=1 
+		and a.transaction_firit_branch_id=?
+		and a.local_trans_date=?
+		and a.gcs_transaction_id not in(
+			select b.gcs_transaction_id
+			from gcs_transaction_info_iss b
+			where 1=1
+			and b.transaction_firit_branch_id=?
+			and b.local_trans_date=?
+		)
+		]]>
+	</sql>
+
+	<sql id='UPDATE_TRANSACTION_INFO_UNREACH_ISS' desc="修改iss未达状态">
+		<![CDATA[
+		update gcs_transaction_info a
+		set a.check_flag_iss = '2',
+		 	a.wait_account_cyc_long = case when a.wait_account_cyc_long is null then 1 
+        	else a.wait_account_cyc_long+1 end
+		where 1=1 
+		and a.transaction_firit_branch_id=?
+		and a.local_trans_date=?
+		and a.gcs_transaction_id not in(
+			select b.gcs_transaction_id
+			from gcs_transaction_info_iss b
+			where 1=1
+			and b.transaction_firit_branch_id=?
+			and b.local_trans_date=?
+		)
+		]]>
+	</sql>
+	<!-- 发卡sql 结束-->
+
+	<!-- 清算sql 开始-->
+	<sql id='SELECT_TRANSACTION_INFO_EI'>
+		<![CDATA[
+		select * from gcs_transaction_info_ei
+		where transaction_firit_branch_id=?
+		and ei_deal_date=?
+		]]>
+	</sql>
+	
+	<sql id='INSERT_TRANSACTION_INFO_EI_UNILA' desc="根据流水插入对账单边交易记录">
+		<![CDATA[
+		insert into gcs_transaction_info_ei_unila (select * from gcs_transaction_info_ei where gcs_transaction_id=?)
+		]]>
+	</sql>
+	
+	<sql id='INSERT_TRANSACTION_INFO_EI_UM' desc="根据流水插入对账不匹配交易记录">
+		<![CDATA[
+		insert into gcs_transaction_info_ei_um (select * from gcs_transaction_info_ei where gcs_transaction_id=?)
+		]]>
+	</sql>
+	
+	<sql id='UPDATE_TRANSACTION_INFO_STATE_EI' desc="根据流水更新对账状态">
+		<![CDATA[
+		update gcs_transaction_info
+		set check_flag_ei=?
+		where 1=1
+		and gcs_transaction_id=?
+		]]>
+	</sql>
+	
+	<sql id='SELECT_TRANSACTION_INFO_UNREACH_EI' desc="查询ei未达">
+		<![CDATA[
+		select * from gcs_transaction_info a
+		where 1=1 
+		and a.transaction_firit_branch_id=?
+		and (a.check_flag_ei is null or a.check_flag_ei='2')
+		and a.gcs_transaction_id not in(
+			select b.gcs_transaction_id
+			from gcs_transaction_info_ei b
+			where 1=1
+			and b.transaction_firit_branch_id=?
+			and b.ei_deal_date=?
+		)
+		]]>
+	</sql>
+	<sql id='UPDATE_TRANSACTION_INFO_UNREACH_EI' desc="修改ei未达状态">
+		<![CDATA[
+		update gcs_transaction_info a
+		set a.check_flag_ei = '2',
+		 	a.wait_account_cyc_long = case when a.wait_account_cyc_long is null then 1 
+        	else a.wait_account_cyc_long+1 end
+		where 1=1 
+		and a.transaction_firit_branch_id=?
+		and a.check_flag_ei is null 
+		and substr(a.transaction_branch_id,0,3)  != substr(a.transaction_firit_branch_id,0,3)
+		and a.gcs_transaction_id not in(
+			select b.gcs_transaction_id
+			from gcs_transaction_info_ei b
+			where 1=1
+			and b.transaction_firit_branch_id=?
+			and b.ei_deal_date=?
+		)
+		]]>
+	</sql>
+	<!-- 清算sql 结束-->
+	<!-- GCS审批报表 start -->
+	<report id='INPUT_JIXIAO' width='100'>
+		<reportName>录入明细报表</reportName>
+		<reportParams>
+			<param bindKey='bhId'/>
+			<param bindKey='date'/>
+		</reportParams>
+		<reportBody>
+			<row type='body' sqlId='INPUT_DETAIL_SQL'>
+				<cell text='序号' bindKey='rownum' type='string' />
+				<cell text='申请件编号' bindKey='appi_app_id' type='string' />
+				<cell text='申请类型' bindKey='appi_app_type' type='string' convert="getLocaleTransLan(appi_app_type)"/>
+				<cell text='产品类型' bindKey='appi_prod_cat_code' type='string' convert="getLocaleTransLan(appi_prod_cat_code)"/>
+				<cell text='姓名' bindKey='appi_mc_name' type='string' />
+				<cell text='证件类型' bindKey='appi_mc_id_type' type='string' convert="getLocaleTransLan(appi_mc_id_type)"/>
+				<cell text='证件号码' bindKey='appi_mc_id_number' type='string' />
+				<cell text='BH' bindKey='appi_bankinfo_bh' type='string' />
+				<cell text='所属机构' bindKey='node_record_branch' type='string' />
+				<cell text='状态' bindKey='appi_state' type='string' convert='getLocaleTransLan(appi_state)'/>
+				<cell text='领卡网点' bindKey='appi_mc_other_card1_bank' type='string' />
+				<cell text='录入日期' bindKey='appi_recv_date' type='string' />
+				<cell text='处理用户' bindKey='node_record_userid' type='string' />
+				<cell text='IN' bindKey='appi_bankinfo_pcc_in' type='string' />
+			</row>
+		</reportBody>
+	</report>
+	<report id='INPUT_REJECT' width='100'>
+		<reportName>录入拒绝明细报表</reportName>
+		<reportParams>
+			<param bindKey='bhId'/>
+			<param bindKey='date'/>
+		</reportParams>
+		<reportBody>
+			<row type='body' sqlId='INPUT_REJECT_DETAIL_SQL'>
+				<cell text='序号' bindKey='rownum' type='string' />
+				<cell text='申请件编号' bindKey='appi_app_id' type='string' />
+				<cell text='申请类型' bindKey='appi_app_type' type='string' convert='getLocaleTransLan(appi_app_type)'/>
+				<cell text='产品类型' bindKey='appi_prod_cat_code' type='string'  convert='getLocaleTransLan(appi_prod_cat_code)'/>
+				<cell text='姓名' bindKey='appi_mc_name' type='string' />
+				<cell text='证件类型' bindKey='appi_mc_id_type' type='string'  convert='getLocaleTransLan(appi_mc_id_type)'/>
+				<cell text='证件号码' bindKey='appi_mc_id_number' type='string' />
+				<cell text='所属机构' bindKey='node_record_branch' type='string' />
+				<cell text='状态' bindKey='appi_state' type='string' convert='getLocaleTransLan(appi_state)'/>
+				<cell text='拒绝原因' bindKey='appi_reject_reason' type='string' />
+				<cell text='拒绝原因备注' bindKey='rejectreasoncontent' type='string' />
+				<cell text='录入日期' bindKey='appi_recv_date' type='string' />
+				<cell text='处理用户' bindKey='node_record_userid' type='string' />
+			</row>
+		</reportBody>
+	</report>
+	<report id='UPLOAD' width='100'>
+		<reportName>已上传发卡明细报表</reportName>
+		<reportParams>
+			<param bindKey='bhId'/>
+			<param bindKey='date'/>
+		</reportParams>
+		<reportBody>
+			<row type='body' sqlId='UPLOAD_DETAIL_SQL'>
+				<cell text='序号' bindKey='rownum' type='string' />
+				<cell text='申请件编号' bindKey='appi_app_id' type='string' />
+				<cell text='申请类型' bindKey='appi_app_type' type='string' convert='getLocaleTransLan(appi_app_type)'/>
+				<cell text='产品类型' bindKey='appi_prod_cat_code' type='string' convert='getLocaleTransLan(appi_prod_cat_code)'/>
+				<cell text='姓名' bindKey='appi_mc_name' type='string' />
+				<cell text='证件类型' bindKey='appi_mc_id_type' type='string' convert='getLocaleTransLan(appi_mc_id_type)'/>
+				<cell text='证件号码' bindKey='appi_mc_id_number' type='string' />
+				<cell text='BH' bindKey='appi_bankinfo_bh' type='string' />
+				<cell text='所属机构' bindKey='node_record_branch' type='string' />
+				<cell text='状态' bindKey='appi_state' type='string' convert='getLocaleTransLan(appi_state)'/>
+				<cell text='领卡网点' bindKey='appi_mc_other_card1_bank' type='string' />
+				<cell text='授信额度' bindKey='appi_mc_pmy_credit_limit' type='string' />
+				<cell text='录入日期' bindKey='appi_recv_date' type='string' />
+				<cell text='处理用户' bindKey='node_record_userid' type='string' />
+				<cell text='IN' bindKey='appi_bankinfo_pcc_in' type='string' />
+				<cell text='STF' bindKey='appi_bankinfo_stat_flag' type='string' />
+			</row>
+		</reportBody>
+	</report>
+	<report id='INPUT_NOT' width='100'>
+		<reportName>录入未结案明细报表</reportName>
+		<reportParams>
+			<param bindKey='bhId'/>
+		</reportParams>
+		<reportBody>
+			<row type='body' sqlId='INPUT_NOT_SQL'>
+				<cell text='序号' bindKey='rownum' type='string' />
+				<cell text='申请件编号' bindKey='appi_app_id' type='string' />
+				<cell text='申请类型' bindKey='appi_app_type' type='string' convert="getLocaleTransLan(appi_app_type)"/>
+				<cell text='产品类型' bindKey='appi_prod_cat_code' type='string' convert="getLocaleTransLan(appi_prod_cat_code)"/>
+				<cell text='姓名' bindKey='appi_mc_name' type='string' />
+				<cell text='证件类型' bindKey='appi_mc_id_type' type='string' convert="getLocaleTransLan(appi_mc_id_type)"/>
+				<cell text='证件号码' bindKey='appi_mc_id_number' type='string' />
+				<cell text='BH' bindKey='appi_bankinfo_bh' type='string' />
+				<cell text='所属机构' bindKey='node_record_branch' type='string' />
+				<cell text='状态' bindKey='appi_state' type='string' convert="getLocaleTransLan(appi_state)"/>
+				<cell text='录入日期' bindKey='appi_recv_date' type='string' />
+				<cell text='处理用户' bindKey='node_record_userid' type='string' />
+				<cell text='IN' bindKey='appi_bankinfo_pcc_in' type='string' />
+				<cell text='VIP' bindKey='appi_bankinfo_vip_flag' type='string' />
+				<cell text='UA' bindKey='appi_bankinfo_ua_flag' type='string' />
+			</row>
+		</reportBody>
+	</report>
+	<sql id='INPUT_DETAIL_SQL' desc="录入明细">
+		<![CDATA[
+		 select  rownum,appi_app_id,
+		( select a.biz_type_prop_name from igcs_biz_args a  where a.biz_type_code = 'appi_app_type' and a.biz_type_prop_code = APPI_APP_TYPE )as APPI_APP_TYPE, 
+		( select pt.pro_cat_name from IgcS_PRODUCT_CAT pt where pt.pro_cat_code = APPI_PROD_CAT_CODE  ) as  APPI_PROD_CAT_CODE, 
+		APPI_MC_FIRST_NAME || APPI_MC_FAMILYNAME as APPI_MC_NAME, 
+		( select a.biz_type_prop_name from igcs_biz_args a  where a.biz_type_code = 'appiMcIdType' and a.biz_type_prop_code = APPI_MC_ID_TYPE ) as  APPI_MC_ID_TYPE,                                
+		APPI_MC_ID_NUMBER,APPI_BANKINFO_BH,node_record_branch, 
+		( select a.biz_type_prop_name from igcs_biz_args a  where a.biz_type_code = 'APPI_STATE' and a.biz_type_prop_code = APPI_STATE ) as appi_state, 
+		APPI_MC_OTHER_CARD1_BANK,
+		to_char(appi_recv_date, 'yyyy-MM-dd hh:Mi') as appi_recv_date,
+		 node_record_userid,APPI_BANKINFO_PCC_IN
+		 from igcs_main_appi m left join boc_bccs_imagedata on appi_app_id = app_id 
+		 where 1 = 1 
+		 and node_record_branch = ?
+		 and appi_recv_date = to_date(?,'yyyy-mm-dd')
+		]]>
+		<params bindKey='bhId'/>
+		<params bindKey='date'/>
+	</sql>
+	<sql id='INPUT_REJECT_DETAIL_SQL' desc="录入拒绝明细">
+		<![CDATA[
+		 select  rownum,appi_app_id,
+		( select a.biz_type_prop_name from igcs_biz_args a  where a.biz_type_code = 'appi_app_type' and a.biz_type_prop_code = APPI_APP_TYPE )as APPI_APP_TYPE, 
+		( select pt.pro_cat_name from IgcS_PRODUCT_CAT pt where pt.pro_cat_code = APPI_PROD_CAT_CODE  ) as  APPI_PROD_CAT_CODE, 
+		APPI_MC_FIRST_NAME || APPI_MC_FAMILYNAME as APPI_MC_NAME, 
+		( select a.biz_type_prop_name from igcs_biz_args a  where a.biz_type_code = 'appiMcIdType' and a.biz_type_prop_code = APPI_MC_ID_TYPE ) as  APPI_MC_ID_TYPE,                                
+		APPI_MC_ID_NUMBER,node_record_branch,
+		( select a.biz_type_prop_name from igcs_biz_args a  where a.biz_type_code = 'APPI_STATE' and a.biz_type_prop_code = APPI_STATE ) as APPI_STATE, 
+    	( select a.biz_type_prop_name from igcs_biz_args a  where a.biz_type_code = 'APPI_REJECT_REASON_P' and a.biz_type_prop_code =appi_reject_reason  ) as appi_reject_reason, 
+    	rejectreasoncontent,
+		to_char(appi_recv_date, 'yyyy-MM-dd hh:Mi') as appi_recv_date,
+		 node_record_userid
+		 from igcs_main_appi m left join boc_bccs_imagedata on appi_app_id = app_id 
+		 where 1 = 1 
+		 and m.appi_state = '43'
+		 and node_record_branch = ?
+		]]>
+		<params bindKey='bhId'/>
+	</sql>
+	<sql id='UPLOAD_DETAIL_SQL' desc="已上传发卡明细">
+		<![CDATA[
+		    select rownum, appi_app_id,
+           (select a.biz_type_prop_name from igcs_biz_args a where a.biz_type_code = 'appi_app_type' and a.biz_type_prop_code = APPI_APP_TYPE) as APPI_APP_TYPE,
+           (select pt.pro_cat_name from IgcS_PRODUCT_CAT pt where pt.pro_cat_code = APPI_PROD_CAT_CODE) as APPI_PROD_CAT_CODE, 
+           APPI_MC_FIRST_NAME || APPI_MC_FAMILYNAME as APPI_MC_NAME,
+           (select a.biz_type_prop_name from igcs_biz_args a where a.biz_type_code = 'appiMcIdType' and a.biz_type_prop_code = APPI_MC_ID_TYPE) as APPI_MC_ID_TYPE,
+           APPI_MC_ID_NUMBER,APPI_BANKINFO_BH, node_record_branch,
+           (select a.biz_type_prop_name from igcs_biz_args a where a.biz_type_code = 'APPI_STATE' and a.biz_type_prop_code = APPI_STATE) as APPI_STATE,
+           APPI_MC_OTHER_CARD1_BANK,appi_mc_pmy_credit_limit,to_char(appi_recv_date, 'yyyy-MM-dd hh:Mi') as appi_recv_date,
+           node_record_userid,APPI_BANKINFO_PCC_IN,appi_bankinfo_stat_flag
+      	   from igcs_main_appi m
+      	   left join boc_bccs_imagedata on appi_app_id = app_id
+           where 1 = 1
+	       and m.appi_state = '25'
+		   and appi_bankinfo_bh = ?
+		   and to_char(m.appi_update_time,'yyyy-mm-dd') = ?
+		]]>
+		<params bindKey='bhId'/>
+		<params bindKey='date'/>
+	</sql>
+	<sql id='INPUT_NOT_SQL' desc="录入未结案明细报表">
+		<![CDATA[
+		 select  rownum,appi_app_id,
+		( select a.biz_type_prop_name from igcs_biz_args a  where a.biz_type_code = 'appi_app_type' and a.biz_type_prop_code = APPI_APP_TYPE )as APPI_APP_TYPE, 
+		( select pt.pro_cat_name from IgcS_PRODUCT_CAT pt where pt.pro_cat_code = APPI_PROD_CAT_CODE  ) as  APPI_PROD_CAT_CODE, 
+		APPI_MC_FIRST_NAME || APPI_MC_FAMILYNAME as APPI_MC_NAME, 
+		( select a.biz_type_prop_name from igcs_biz_args a  where a.biz_type_code = 'appiMcIdType' and a.biz_type_prop_code = APPI_MC_ID_TYPE ) as  APPI_MC_ID_TYPE,                                
+		APPI_MC_ID_NUMBER,APPI_BANKINFO_BH,node_record_branch, 
+		( select a.biz_type_prop_name from igcs_biz_args a  where a.biz_type_code = 'APPI_STATE' and a.biz_type_prop_code = APPI_STATE ) as APPI_STATE, 
+		to_char(appi_recv_date, 'yyyy-MM-dd hh:Mi') as appi_recv_date,
+		 node_record_userid,APPI_BANKINFO_PCC_IN,appi_bankinfo_vip_flag,appi_bankinfo_ua_flag
+		 from igcs_main_appi m left join boc_bccs_imagedata on appi_app_id = app_id 
+		 where 1 = 1 
+		 and node_record_branch = ?
+		 and m.appi_state in ('41','42','44')
+		]]>
+		<params bindKey='bhId'/>
+	</sql>
+	<!-- GCS审批报表 end -->
+</reports>
